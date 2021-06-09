@@ -1,0 +1,29 @@
+:root {
+  --calculator-background-color: black;
+  --page-background-color: lightgray;
+  --display-text-color: white;
+  --display-background-color: black;
+  --mem-key-text-color: white;
+  --mem-key-background-color: #262626;
+  --special-key-text-color: black;
+  --special-key-background-color: #a4a4a4;
+  --op-key-text-color: white;
+  --op-key-background-color: #ff9c34;
+  --num-key-text-color: white;
+  --num-key-background-color: #363636;
+}
+
+.calculator {
+  width: 200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-container {
+  display: grid;
+  grid-template: repeat(6, 1fr) / repeat(4, 1fr);
+  gap: 10px;
+}
