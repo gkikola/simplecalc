@@ -1,6 +1,6 @@
 # Simple JavaScript Calculator
 
-A basic pocket-style calculator written in JavaScript. It was originally
+A simple pocket-style calculator written in JavaScript. It was originally
 created for [The Odin Project](https://www.theodinproject.com/).
 
 ## Functions
