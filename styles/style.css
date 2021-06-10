@@ -63,7 +63,7 @@ main {
   font-size: 32px;
   border: none;
   border-radius: 50%;
-  transition: all 250ms ease-out;
+  transition: all 300ms ease-out;
 }
 
 .num-key {
@@ -90,4 +90,5 @@ main {
 .pressed-key {
   color: var(--pressed-key-text-color);
   background-color: var(--pressed-key-background-color);
+  transition: all 100ms ease-in;
 }
