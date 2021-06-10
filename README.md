@@ -1,4 +1,4 @@
-# Simple JavaScript Calculator
+# Simple Calculator
 
 A simple pocket-style calculator written in JavaScript. It was originally
 created for [The Odin Project](https://www.theodinproject.com/).
