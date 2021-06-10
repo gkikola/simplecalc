@@ -12,6 +12,8 @@
   --op-key-background-color: #ff9c34;
   --num-key-text-color: white;
   --num-key-background-color: #363636;
+  --pressed-key-text-color: black;
+  --pressed-key-background-color: white;
 }
 
 body {
@@ -61,6 +63,7 @@ main {
   font-size: 32px;
   border: none;
   border-radius: 50%;
+  transition: all 250ms ease-out;
 }
 
 .num-key {
@@ -82,4 +85,9 @@ main {
 .special-key {
   color: var(--special-key-text-color);
   background-color: var(--special-key-background-color);
+}
+
+.pressed-key {
+  color: var(--pressed-key-text-color);
+  background-color: var(--pressed-key-background-color);
 }
