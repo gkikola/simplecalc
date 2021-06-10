@@ -232,10 +232,23 @@ function pressButton(button) {
 }
 
 function highlightButton(button) {
-  getButtonElement(button).classList.add('pressed-key');
+  const classes = getButtonElement(button).classList;
+
+  if (classes.contains('num-key'))
+    classes.add('num-key-pressed');
+  else if (classes.contains('mem-key'))
+    classes.add('mem-key-pressed');
+  else if (classes.contains('op-key'))
+    classes.add('op-key-pressed');
+  else if (classes.contains('special-key'))
+    classes.add('special-key-pressed');
 }
 
 function releaseButton() {
-  for (key in keys)
-    keys[key].classList.remove('pressed-key');
+  for (key in keys) {
+    keys[key].classList.remove('num-key-pressed');
+    keys[key].classList.remove('mem-key-pressed');
+    keys[key].classList.remove('op-key-pressed');
+    keys[key].classList.remove('special-key-pressed');
+  }
 }

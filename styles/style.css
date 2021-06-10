@@ -6,14 +6,22 @@
   --display-background-color: black;
   --mem-key-text-color: white;
   --mem-key-background-color: #262626;
+  --mem-key-pressed-text-color: black;
+  --mem-key-pressed-background-color: #d9d9d9;
   --special-key-text-color: black;
   --special-key-background-color: #a4a4a4;
+  --special-key-pressed-text-color: white;
+  --special-key-pressed-background-color: #5b5b5b;
   --op-key-text-color: white;
   --op-key-background-color: #ff9c34;
+  --op-key-pressed-text-color: black;
+  --op-key-pressed-background-color: #ffcc00;
   --num-key-text-color: white;
   --num-key-background-color: #363636;
-  --pressed-key-text-color: black;
-  --pressed-key-background-color: white;
+  --num-key-pressed-text-color: black;
+  --num-key-pressed-background-color: #c9c9c9;
+  --key-press-transition-in-duration: 100ms;
+  --key-press-transition-out-duration: 300ms;
 }
 
 body {
@@ -63,12 +71,18 @@ main {
   font-size: 32px;
   border: none;
   border-radius: 50%;
-  transition: all 300ms ease-out;
+  transition: all var(--key-press-transition-out-duration) ease-out;
 }
 
 .num-key {
   color: var(--num-key-text-color);
   background-color: var(--num-key-background-color);
+}
+
+.num-key-pressed {
+  color: var(--num-key-pressed-text-color);
+  background-color: var(--num-key-pressed-background-color);
+  transition: all var(--key-press-transition-in-duration) ease-in;
 }
 
 .mem-key {
@@ -77,9 +91,21 @@ main {
   background-color: var(--mem-key-background-color);
 }
 
+.mem-key-pressed {
+  color: var(--mem-key-pressed-text-color);
+  background-color: var(--mem-key-pressed-background-color);
+  transition: all var(--key-press-transition-in-duration) ease-in;
+}
+
 .op-key {
   color: var(--op-key-text-color);
   background-color: var(--op-key-background-color);
+}
+
+.op-key-pressed {
+  color: var(--op-key-pressed-text-color);
+  background-color: var(--op-key-pressed-background-color);
+  transition: all var(--key-press-transition-in-duration) ease-in;
 }
 
 .special-key {
@@ -87,8 +113,8 @@ main {
   background-color: var(--special-key-background-color);
 }
 
-.pressed-key {
-  color: var(--pressed-key-text-color);
-  background-color: var(--pressed-key-background-color);
-  transition: all 100ms ease-in;
+.special-key-pressed {
+  color: var(--special-key-pressed-text-color);
+  background-color: var(--special-key-pressed-background-color);
+  transition: all var(--key-press-transition-in-duration) ease-in;
 }
