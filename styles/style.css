@@ -60,7 +60,7 @@ main {
   height: 60px;
   font-size: 32px;
   border: none;
-  border-radius: 25px;;
+  border-radius: 50%;
 }
 
 .num-key {
