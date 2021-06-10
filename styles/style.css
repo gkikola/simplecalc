@@ -1,5 +1,6 @@
 :root {
   --calculator-background-color: black;
+  --calculator-shadow-color: #363636;
   --page-background-color: lightgray;
   --display-text-color: white;
   --display-background-color: black;
@@ -13,17 +14,72 @@
   --num-key-background-color: #363636;
 }
 
-.calculator {
-  width: 200px;
-  margin: auto;
+body {
+  background-color: var(--page-background-color);
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+main {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.calculator {
+  width: 275px;
+  margin: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 10px;
+  background-color: var(--calculator-background-color);
+  border-radius: 20px;
+  box-shadow: 10px 10px 15px var(--calculator-shadow-color);
+}
+
+.display {
+  width: 240px;
+  height: 35px;
+  padding: 5px 15px;
+  color: var(--display-text-color);
+  background-color: var(--display-background-color);
+  font-size: 36px;
+  text-align: right;
 }
 
 .button-container {
   display: grid;
   grid-template: repeat(6, 1fr) / repeat(4, 1fr);
   gap: 10px;
+}
+
+.key {
+  width: 60px;
+  height: 60px;
+  font-size: 32px;
+  border: none;
+  border-radius: 25px;;
+}
+
+.num-key {
+  color: var(--num-key-text-color);
+  background-color: var(--num-key-background-color);
+}
+
+.mem-key {
+  font-size: 24px;
+  color: var(--mem-key-text-color);
+  background-color: var(--mem-key-background-color);
+}
+
+.op-key {
+  color: var(--op-key-text-color);
+  background-color: var(--op-key-background-color);
+}
+
+.special-key {
+  color: var(--special-key-text-color);
+  background-color: var(--special-key-background-color);
 }
