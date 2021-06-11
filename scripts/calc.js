@@ -26,31 +26,40 @@ const keys = {
 };
 
 const calculator = {
-  display: 0,
+  currentEntry: '',
+  previousNumber: 0,
+
+  // The last operator that was pressed, or null if none
   operator: null,
+
+  // The custom stored value used by the memory buttons
   memory: 0,
 
   /* True if the clear button should clear the entire expression (instead of
-     just the current value). */
+   * just the current value). */
   clearAll: false,
 
-  // Holds digits (and decimal point) for the number being entered
-  digitSequence: [],
-
-  // Holds keys that the user is typing on the keyboard
+  /* Holds keys that the user is typing on the keyboard. This is needed for
+   * the square root and mem keyboard commands. */
   keyboardSequence: [],
 }
 
-for (key in keys) {
-  const buttonElement = keys[key];
-  const button = getButtonText(buttonElement);
-  buttonElement.addEventListener('mousedown', () => highlightButton(button));
-  buttonElement.addEventListener('click', () => pressButton(button));
-}
+init();
 
-document.addEventListener('keydown', handleKeyPress);
-document.addEventListener('keyup', releaseButton);
-document.addEventListener('mouseup', releaseButton);
+function init() {
+  for (key in keys) {
+    const buttonElement = keys[key];
+    const button = getButtonText(buttonElement);
+    buttonElement.addEventListener('mousedown', () => highlightButton(button));
+    buttonElement.addEventListener('click', () => pressButton(button));
+  }
+
+  document.addEventListener('keydown', handleKeyPress);
+  document.addEventListener('keyup', releaseButton);
+  document.addEventListener('mouseup', releaseButton);
+
+  setDisplay(0);
+}
 
 function handleKeyPress(event) {
   switch (event.key) {
@@ -251,4 +260,13 @@ function releaseButton() {
     keys[key].classList.remove('op-key-pressed');
     keys[key].classList.remove('special-key-pressed');
   }
+}
+
+function setDisplay(number) {
+  const display = document.querySelector('#display');
+
+  if (Number.isFinite(number))
+    display.textContent = number;
+  else
+    display.textContent = 'ERROR';
 }
