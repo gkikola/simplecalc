@@ -26,14 +26,19 @@ const keys = {
 };
 
 const calculator = {
-  currentEntry: '',
+  displayedNumber: 0,
   previousNumber: 0,
-
-  // The last operator that was pressed, or null if none
   operator: null,
 
   // The custom stored value used by the memory buttons
   memory: 0,
+
+  currentEntry: {
+    input: '',
+    isNegative: false,
+    hasDecimalPoint: false,
+    isError: false,
+  },
 
   /* True if the clear button should clear the entire expression (instead of
    * just the current value). */
@@ -43,6 +48,8 @@ const calculator = {
    * the square root and mem keyboard commands. */
   keyboardSequence: [],
 }
+
+const MAX_DIGITS = 10;
 
 init();
 
@@ -269,4 +276,15 @@ function setDisplay(number) {
     display.textContent = number;
   else
     display.textContent = 'ERROR';
+}
+
+function pushDigit(digit) {
+  const entry = calculator.currentEntry;
+  const maxInputLength = entry.hasDecimal ? MAX_DIGITS + 1 : MAX_DIGITS;
+
+  // Too many digits = error, unless after the decimal point
+  if (entry.input.length < maxInputLength)
+    entry.input += digit;
+  else
+    entry.isError = !entry.hasDecimalPoint;
 }
