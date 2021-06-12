@@ -65,7 +65,8 @@ function init() {
   document.addEventListener('keyup', releaseButton);
   document.addEventListener('mouseup', releaseButton);
 
-  setDisplay(0);
+  clearEntry();
+  displayCurrentEntry();
 }
 
 function handleKeyPress(event) {
@@ -245,6 +246,27 @@ function getButtonText(buttonElement) {
 function pressButton(button) {
   calculator.keyboardSequence = [];
   releaseButton();
+
+  if (button !== 'C')
+    calculator.clearAll = false;
+
+  switch (button) {
+  case 'C':
+    if (calculator.clearAll) {
+      clearAll();
+    } else {
+      calculator.clearAll = true;
+      clearEntry();
+    }
+    break;
+  case '0': case '1': case '2': case '3': case '4':
+  case '5': case '6': case '7': case '8': case '9':
+    pushDigit(button);
+    break;
+  case '.':
+    pushDecimalPoint();
+    break;
+  }
 }
 
 function highlightButton(button) {
@@ -269,13 +291,60 @@ function releaseButton() {
   }
 }
 
-function setDisplay(number) {
+function setDisplay(string) {
   const display = document.querySelector('#display');
 
-  if (Number.isFinite(number))
-    display.textContent = number;
-  else
-    display.textContent = 'ERROR';
+  display.textContent = string;
+}
+
+function displayCurrentEntry() {
+  const display = document.querySelector('#display');
+
+  const entry = calculator.currentEntry;
+
+  if (entry.isError) {
+    calculator.displayedNumber = Number.NaN;
+    setDisplay('ERROR');
+  } else {
+    let output = '';
+
+    if (entry.isNegative)
+      output += '-';
+
+    if (entry.input.length === 0)
+      output += '0';
+    else
+      output += entry.input;
+
+    if (!entry.hasDecimalPoint)
+      output += '.';
+
+    calculator.displayedNumber = Number(output);
+    setDisplay(insertCommas(output));
+  }
+}
+
+function insertCommas(numberString) {
+  return numberString;
+}
+
+function clearEntry() {
+  const entry = calculator.currentEntry;
+  entry.input = '';
+  entry.isNegative = false;
+  entry.hasDecimalPoint = false;
+  entry.isError = false;
+
+  displayCurrentEntry();
+}
+
+function clearAll() {
+  calculator.displayedNumber = 0;
+  calculator.previousNumber = 0;
+  calculator.operator = null;
+  calculator.clearAll = false;
+
+  clearEntry();
 }
 
 function pushDigit(digit) {
@@ -286,5 +355,18 @@ function pushDigit(digit) {
   if (entry.input.length < maxInputLength)
     entry.input += digit;
   else
-    entry.isError = !entry.hasDecimalPoint;
+    entry.isError ||= !entry.hasDecimalPoint;
+
+  displayCurrentEntry();
+}
+
+function pushDecimalPoint() {
+  const entry = calculator.currentEntry;
+
+  if (!entry.hasDecimalPoint) {
+    entry.input += '.';
+    entry.hasDecimalPoint = true;
+  }
+
+  displayCurrentEntry();
 }
