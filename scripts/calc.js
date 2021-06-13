@@ -273,6 +273,10 @@ function pressButton(button) {
   case '+-':
     toggleSign();
     break;
+  case '+': case '-':
+  case '*': case '/':
+    pushOperator(button);
+    break;
   }
 }
 
@@ -377,13 +381,17 @@ function clearAll() {
 
 function pushDigit(digit) {
   const entry = calculator.currentEntry;
-  const maxInputLength = entry.hasDecimalPoint ? MAX_DIGITS + 1 : MAX_DIGITS;
 
-  // Too many digits = error, unless after the decimal point
-  if (entry.input.length < maxInputLength)
-    entry.input += digit;
-  else
-    entry.isError ||= !entry.hasDecimalPoint;
+  // Don't want to insert extra zeroes before decimal point
+  if (digit !== '0' || entry.input.length > 0) {
+    const maxInputLength = entry.hasDecimalPoint ? MAX_DIGITS + 1 : MAX_DIGITS;
+
+    // Too many digits = error, unless after the decimal point
+    if (entry.input.length < maxInputLength)
+      entry.input += digit;
+    else
+      entry.isError ||= !entry.hasDecimalPoint;
+  }
 
   displayCurrentEntry();
 }
@@ -406,4 +414,7 @@ function toggleSign() {
   const entry = calculator.currentEntry;
   entry.isNegative = !entry.isNegative;
   displayCurrentEntry();
+}
+
+function pushOperator(op) {
 }
