@@ -118,3 +118,110 @@ main {
   background-color: var(--special-key-pressed-background-color);
   transition: all var(--key-press-transition-in-duration) ease-in;
 }
+
+/* Change layout for mobile landscape */
+@media (max-height: 430px) {
+  .calculator {
+    width: 410px;
+  }
+
+  .button-container {
+    grid-template: repeat(4, 1fr) / repeat(6, 1fr);
+  }
+
+  #mc {
+    grid-area: 1 / 1;
+  }
+
+  #clear {
+    grid-area: 1 / 2;
+  }
+
+  #num-7 {
+    grid-area: 1 / 3;
+  }
+
+  #num-8 {
+    grid-area: 1 / 4;
+  }
+
+  #num-9 {
+    grid-area: 1 / 5;
+  }
+
+  #divide {
+    grid-area: 1 / 6;
+  }
+
+  #mr {
+    grid-area: 2 / 1;
+  }
+
+  #plus-minus {
+    grid-area: 2 / 2;
+  }
+
+  #num-4 {
+    grid-area: 2 / 3;
+  }
+
+  #num-5 {
+    grid-area: 2 / 4;
+  }
+
+  #num-6 {
+    grid-area: 2 / 5;
+  }
+
+  #multiply {
+    grid-area: 2 / 6;
+  }
+
+  #m-minus {
+    grid-area: 3 / 1;
+  }
+
+  #percent {
+    grid-area: 3 / 2;
+  }
+
+  #num-1 {
+    grid-area: 3 / 3;
+  }
+
+  #num-2 {
+    grid-area: 3 / 4;
+  }
+
+  #num-3 {
+    grid-area: 3 / 5;
+  }
+
+  #minus {
+    grid-area: 3 / 6;
+  }
+
+  #m-plus {
+    grid-area: 4 / 1;
+  }
+
+  #sqrt {
+    grid-area: 4 / 2;
+  }
+
+  #num-0 {
+    grid-area: 4 / 3;
+  }
+
+  #decimal-point {
+    grid-area: 4 / 4;
+  }
+
+  #equals {
+    grid-area: 4 / 5;
+  }
+
+  #add {
+    grid-area: 4 / 6;
+  }
+}
