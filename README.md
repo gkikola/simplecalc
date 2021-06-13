@@ -23,7 +23,7 @@ The operators and other supported functions are summarized in the table below.
 | &radic;     | s q r t           | Square root                   |
 | =           | =                 | Result                        |
 | %           | %                 | Percent                       |
-| &plusmn;    | None              | Toggle sign                   |
+| &plusmn;    | n                 | Toggle sign                   |
 | C           | Escape            | Clear/reset                   |
 | MC          | m c               | Memory clear                  |
 | MR          | m r               | Memory recall                 |

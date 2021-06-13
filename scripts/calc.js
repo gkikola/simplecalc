@@ -90,6 +90,10 @@ function handleKeyPress(event) {
       highlightButton('MR');
     }
     break;
+  case 'n':
+    pressButton('+-');
+    highlightButton('+-');
+    break;
   case 'c':
     calculator.keyboardSequence.push(event.key);
     if (calculator.keyboardSequence.join('') === 'mc') {
@@ -266,6 +270,9 @@ function pressButton(button) {
   case '.':
     pushDecimalPoint();
     break;
+  case '+-':
+    toggleSign();
+    break;
   }
 }
 
@@ -392,5 +399,11 @@ function pushDecimalPoint() {
     entry.hasDecimalPoint = true;
   }
 
+  displayCurrentEntry();
+}
+
+function toggleSign() {
+  const entry = calculator.currentEntry;
+  entry.isNegative = !entry.isNegative;
   displayCurrentEntry();
 }
