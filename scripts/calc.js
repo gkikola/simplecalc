@@ -35,12 +35,16 @@ const calculator = {
   // The custom stored value used by the memory buttons
   memory: 0,
 
+  // Information about the number being entered
   currentEntry: {
     input: '',
     isNegative: false,
     hasDecimalPoint: false,
     isError: false,
   },
+
+  // True if last button pressed was an operator
+  canCorrectOperator: false,
 
   /* True if the clear button should clear the entire expression (instead of
    * just the current value). */
@@ -256,6 +260,10 @@ function pressButton(button) {
   if (button !== 'C')
     calculator.clearAll = false;
 
+  if (button !== '+' && button !== '-'
+      && button !== '*' && button !== '/')
+    calculator.canCorrectOperator = false;
+
   switch (button) {
   case 'C':
     if (calculator.clearAll) {
@@ -435,6 +443,7 @@ function clearAll() {
   calculator.runningTotal = 0;
   calculator.currentOperator = null;
   calculator.lastOperator = null;
+  calculator.canCorrectOperator = false;
   calculator.clearAll = false;
 
   clearEntry();
@@ -505,12 +514,13 @@ function compute() {
 function pushOperator(op) {
   if (calculator.currentOperator === null)
     calculator.runningTotal = calculator.displayedNumber;
-  else if (calculator.currentEntry.input.length > 0)
+  else if (!calculator.canCorrectOperator)
     compute();
 
   clearEntry();
   calculator.currentOperator = op;
   calculator.lastOperator = op;
+  calculator.canCorrectOperator = true;
 }
 
 function pushEquals() {
