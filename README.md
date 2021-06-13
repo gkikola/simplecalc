@@ -4,6 +4,24 @@ A simple pocket-style calculator written in JavaScript. It was originally
 created for [The Odin Project](https://www.theodinproject.com/).
 
 
+#### Table of Contents
+
+- [Features](#features)
+- [Functions](#functions)
+- [Instructions](#instructions)
+  - [Basic Arithmetic](#basic-arithmetic)
+  - [Arithmetic with Negative Numbers](#arithmetic-with-negative-numbers)
+  - [Square Roots](#square-roots)
+  - [Percentage Calculations](#percentage-calculations)
+    - [Basic Percentages](#basic-percentages)
+    - [Tax and Discounts](#tax-and-discounts)
+  - [Calculations with Constants](#calculations-with-constants)
+  - [Storing and Manipulating Values in Memory](#storing-and-manipulating-values-in-memory)
+  - [Correcting Mistakes](#correcting-mistakes)
+  - [Errors and Overflow](#errors-and-overflow)
+- [Copyright](#copyright)
+
+
 ## Features
 
 - Easy to read 10-digit display with commas for digit grouping
