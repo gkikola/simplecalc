@@ -325,7 +325,28 @@ function displayCurrentEntry() {
 }
 
 function insertCommas(numberString) {
-  return numberString;
+  const decPointIndex = numberString.indexOf('.');
+
+  const sign = numberString.charAt(0) === '-' ? '-' : '';
+  let integerPart;
+  let fractionPart;
+  if (decPointIndex < 0) {
+    integerPart = numberString.slice(sign.length);
+    fractionPart = '';
+  } else {
+    integerPart = numberString.slice(sign.length, decPointIndex);
+    fractionPart = numberString.slice(decPointIndex);
+  }
+
+  const length = integerPart.length;
+  let digitArray = [];
+  for (let position = length - 1; position >= 0; position--) {
+    digitArray.unshift(integerPart.charAt(position));
+    if ((length - position) % 3 === 0 && position > 0)
+      digitArray.unshift(',');
+  }
+
+  return sign + digitArray.join('') + fractionPart;
 }
 
 function clearEntry() {
@@ -349,7 +370,7 @@ function clearAll() {
 
 function pushDigit(digit) {
   const entry = calculator.currentEntry;
-  const maxInputLength = entry.hasDecimal ? MAX_DIGITS + 1 : MAX_DIGITS;
+  const maxInputLength = entry.hasDecimalPoint ? MAX_DIGITS + 1 : MAX_DIGITS;
 
   // Too many digits = error, unless after the decimal point
   if (entry.input.length < maxInputLength)
