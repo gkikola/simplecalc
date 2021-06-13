@@ -21,7 +21,7 @@ The operators and other supported functions are summarized in the table below.
 | &divide;    | /                 | Division                      |
 | .           | .                 | Decimal point                 |
 | &radic;     | s q r t           | Square root                   |
-| =           | =                 | Result                        |
+| =           | Enter, =          | Result                        |
 | %           | %                 | Percent                       |
 | &plusmn;    | n                 | Toggle sign                   |
 | C           | Escape            | Clear/reset                   |
