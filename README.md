@@ -28,7 +28,7 @@ The operators and other supported functions are summarized in the table below.
 | &radic;     | s q r t           | Square root                   |
 | =           | Enter, =          | Result                        |
 | %           | %                 | Percent                       |
-| &plusmn;    | n                 | Toggle sign                   |
+| &plusmn;    | n                 | Change sign                   |
 | C           | Escape            | Clear/reset                   |
 | MC          | m c               | Memory clear                  |
 | MR          | m r               | Memory recall                 |
