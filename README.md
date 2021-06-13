@@ -173,7 +173,7 @@ Examples:
 
 | Description                                | Button Presses                                            | Displayed Result |
 | ------------------------------------------ | --------------------------------------------------------- | ----------------:|
-| Calculate 8*4 + 25/5 + 6*9/3               | 8&times;4=(M+)25&divide;5=(M+)6&times;9&divide;3=(M-)(MR) | 19.              |
+| Calculate 8\*4 + 25/5 + 6\*9/3             | 8&times;4=(M+)25&divide;5=(M+)6&times;9&divide;3=(M-)(MR) | 19.              |
 | Add $108 with 6% tax plus $99 with 10% tax | (MC)108+6%(M+)99+10%(M+)(MR)                              | 223.38           |
 
 
