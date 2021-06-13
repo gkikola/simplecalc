@@ -3,6 +3,8 @@
 A simple pocket-style calculator written in JavaScript. It was originally
 created for [The Odin Project](https://www.theodinproject.com/).
 
+[View Live Version](https://www.gregkikola.com/simplecalc/).
+
 
 #### Table of Contents
 
