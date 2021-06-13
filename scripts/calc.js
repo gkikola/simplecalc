@@ -343,10 +343,34 @@ function displayResult(number) {
   calculator.displayedNumber = number;
 
   if (Number.isFinite(number)) {
-    let output = insertCommas(number.toString());
+    let output = number.toString();
+    let overflow = false;
 
     if (output.indexOf('.') < 0)
       output += '.';
+    const fracStart = output.indexOf('.');
+
+    // Check for overflow
+    if (output.indexOf('e') >= 0 || output.indexOf('E') >= 0)
+      overflow = true;
+
+    // Make sure number doesn't exceed display size
+    if (output.length > MAX_DIGITS + 1) {
+      output = output.substring(0, MAX_DIGITS + 1);
+      if (output.indexOf('.') < 0) {
+        overflow = true;
+      } else {
+        // Trim trailing zeroes
+        output = output.replace(/0*$/, '');
+      }
+    }
+
+    if (overflow) {
+      output = 'ERROR';
+      calculator.displayedNumber = Number.NaN;
+    } else {
+      output = insertCommas(output);
+    }
 
     setDisplay(output);
   } else {
@@ -493,7 +517,7 @@ function pushEquals() {
         displayResult(calculator.runningTotal);
         break;
       case '/':
-        calculator.runningTotal = calculator.displayNumber
+        calculator.runningTotal = calculator.displayedNumber
           / calculator.constantOperand;
         displayResult(calculator.runningTotal);
         break;
