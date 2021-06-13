@@ -6,7 +6,7 @@ created for [The Odin Project](https://www.theodinproject.com/).
 
 ## Features
 
-- Easy to read 10-digit display with commas inserted for digit grouping
+- Easy to read 10-digit display with commas for digit grouping
 
 
 ## Functions
