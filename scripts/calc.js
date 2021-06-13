@@ -27,8 +27,10 @@ const keys = {
 
 const calculator = {
   displayedNumber: 0,
-  previousNumber: 0,
-  operator: null,
+  constantOperand: 0,
+  runningTotal: 0,
+  currentOperator: null,
+  lastOperator: null,
 
   // The custom stored value used by the memory buttons
   memory: 0,
@@ -262,6 +264,7 @@ function pressButton(button) {
       calculator.clearAll = true;
       clearEntry();
     }
+    displayCurrentEntry();
     break;
   case '0': case '1': case '2': case '3': case '4':
   case '5': case '6': case '7': case '8': case '9':
@@ -276,6 +279,9 @@ function pressButton(button) {
   case '+': case '-':
   case '*': case '/':
     pushOperator(button);
+    break;
+  case '=':
+    pushEquals();
     break;
   }
 }
@@ -309,8 +315,6 @@ function setDisplay(string) {
 }
 
 function displayCurrentEntry() {
-  const display = document.querySelector('#display');
-
   const entry = calculator.currentEntry;
 
   if (entry.isError) {
@@ -332,6 +336,21 @@ function displayCurrentEntry() {
 
     calculator.displayedNumber = Number(output);
     setDisplay(insertCommas(output));
+  }
+}
+
+function displayResult(number) {
+  calculator.displayedNumber = number;
+
+  if (Number.isFinite(number)) {
+    let output = insertCommas(number.toString());
+
+    if (output.indexOf('.') < 0)
+      output += '.';
+
+    setDisplay(output);
+  } else {
+    setDisplay('ERROR');
   }
 }
 
@@ -366,14 +385,14 @@ function clearEntry() {
   entry.isNegative = false;
   entry.hasDecimalPoint = false;
   entry.isError = false;
-
-  displayCurrentEntry();
 }
 
 function clearAll() {
   calculator.displayedNumber = 0;
-  calculator.previousNumber = 0;
-  calculator.operator = null;
+  calculator.constantOperand = 0;
+  calculator.runningTotal = 0;
+  calculator.currentOperator = null;
+  calculator.lastOperator = null;
   calculator.clearAll = false;
 
   clearEntry();
@@ -416,5 +435,54 @@ function toggleSign() {
   displayCurrentEntry();
 }
 
+function compute() {
+  switch (calculator.currentOperator) {
+  case '+':
+    calculator.runningTotal += calculator.displayedNumber;
+    calculator.constantOperand = calculator.displayedNumber;
+    displayResult(calculator.runningTotal);
+    break;
+  case '-':
+    calculator.runningTotal -= calculator.displayedNumber;
+    calculator.constantOperand = calculator.displayedNumber;
+    displayResult(calculator.runningTotal);
+    break;
+  }
+}
+
 function pushOperator(op) {
+  if (calculator.currentOperator === null)
+    calculator.runningTotal = calculator.displayedNumber;
+  else if (calculator.currentEntry.input.length > 0)
+    compute();
+
+  clearEntry();
+  calculator.currentOperator = op;
+  calculator.lastOperator = op;
+}
+
+function pushEquals() {
+  if (calculator.currentOperator === null) {
+    if (calculator.lastOperator === null) {
+      calculator.runningTotal = calculator.displayedNumber;
+    } else { // Handle constant operations
+      switch (calculator.lastOperator) {
+      case '+':
+        calculator.runningTotal = calculator.displayedNumber
+          + calculator.constantOperand;
+        displayResult(calculator.runningTotal);
+        break;
+      case '-':
+        calculator.runningTotal = calculator.displayedNumber
+          - calculator.constantOperand;
+        displayResult(calculator.runningTotal);
+        break;
+      }
+    }
+  } else {
+    compute();
+  }
+
+  clearEntry();
+  calculator.currentOperator = null;
 }
