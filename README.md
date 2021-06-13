@@ -3,6 +3,12 @@
 A simple pocket-style calculator written in JavaScript. It was originally
 created for [The Odin Project](https://www.theodinproject.com/).
 
+
+## Features
+
+- Easy to read 10-digit display with commas inserted for digit grouping
+
+
 ## Functions
 
 The operators and other supported functions are summarized in the table below.
