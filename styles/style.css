@@ -39,7 +39,7 @@ main {
 .calculator {
   width: 275px;
   margin: auto;
-  padding: 12px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,9 +50,9 @@ main {
 }
 
 .display {
-  width: 240px;
+  width: 260px;
   height: 35px;
-  padding: 5px 15px;
+  padding: 5px 5px;
   color: var(--display-text-color);
   background-color: var(--display-background-color);
   font-size: 36px;
