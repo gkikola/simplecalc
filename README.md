@@ -108,7 +108,7 @@ Examples:
 | Description     | Button Presses | Displayed Result |
 | --------------- | -------------- | ----------------:|
 | Find 5% of 20   | 20&times;5%    | 1.               |
-| Find 30% of 48  | 48&times;30%   | 14.4             |
+| Find 30% of 48  | 48&times;30%   | 14.39999999      |
 | Find 200% of 15 | 15&times;200%  | 30.              |
 
 To determine what percentage a number is of another number, enter the first
