@@ -49,7 +49,7 @@ Examples:
 | -------------- | ----------------:|
 | 1234+5678=     | 6,912.           |
 | 1234-5678=     | -4,444.          |
-| 7&times;=      | 42.              |
+| 7&times;6=     | 42.              |
 | 22&divide;7=   | 3.142857142      |
 
 One can also perform operations with more than two numbers. As you press each
