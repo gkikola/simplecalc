@@ -550,21 +550,53 @@ function pushEquals() {
 }
 
 function pushPercent() {
+  if (calculator.currentOperator === null) {
+    if (calculator.lastOperator === null) {
+      calculator.runningTotal = calculator.displayedNumber;
+    } else { // Handle constant operations
+      switch (calculator.lastOperator) {
+      case '+':
+        calculator.runningTotal = calculator.constantOperand
+          * (1 + calculator.displayedNumber / 100);
+        displayResult(calculator.runningTotal);
+        break;
+      case '-':
+        calculator.runningTotal = calculator.constantOperand
+          * (1 - calculator.displayedNumber / 100);
+        displayResult(calculator.runningTotal);
+        break;
+      case '*':
+        calculator.runningTotal = calculator.displayedNumber
+          * calculator.constantOperand / 100;
+        displayResult(calculator.runningTotal);
+        break;
+      case '/':
+        calculator.runningTotal = calculator.displayedNumber
+          / (calculator.constantOperand / 100);
+        displayResult(calculator.runningTotal);
+        break;
+      }
+    }
+  }
   switch (calculator.currentOperator) {
   case '+': // Markup
     calculator.runningTotal *= (1 + calculator.displayedNumber / 100);
+    calculator.constantOperand = calculator.displayedNumber;
     displayResult(calculator.runningTotal);
     break;
   case '-': // Markdown
     calculator.runningTotal *= (1 - calculator.displayedNumber / 100);
+    calculator.constantOperand = calculator.displayedNumber;
     displayResult(calculator.runningTotal);
     break;
   case '*': // Percentage of first operand
+    calculator.constantOperand = calculator.runningTotal;
     calculator.runningTotal *= calculator.displayedNumber / 100;
     displayResult(calculator.runningTotal);
     break;
   case '/':
     calculator.runningTotal /= calculator.displayedNumber / 100;
+    calculator.constantOperand = calculator.displayedNumber;
     displayResult(calculator.runningTotal);
     break;
   }
