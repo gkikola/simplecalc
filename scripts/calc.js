@@ -286,6 +286,9 @@ function pressButton(button) {
   case '=':
     pushEquals();
     break;
+  case '%':
+    pushPercent();
+    break;
   }
 }
 
@@ -528,6 +531,30 @@ function pushEquals() {
     }
   } else {
     compute();
+  }
+
+  clearEntry();
+  calculator.currentOperator = null;
+}
+
+function pushPercent() {
+  switch (calculator.currentOperator) {
+  case '+': // Markup
+    calculator.runningTotal *= (1 + calculator.displayedNumber / 100);
+    displayResult(calculator.runningTotal);
+    break;
+  case '-': // Markdown
+    calculator.runningTotal *= (1 - calculator.displayedNumber / 100);
+    displayResult(calculator.runningTotal);
+    break;
+  case '*': // Percentage of first operand
+    calculator.runningTotal *= calculator.displayedNumber / 100;
+    displayResult(calculator.runningTotal);
+    break;
+  case '/':
+    calculator.runningTotal /= calculator.displayedNumber / 100;
+    displayResult(calculator.runningTotal);
+    break;
   }
 
   clearEntry();
