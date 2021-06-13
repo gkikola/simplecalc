@@ -452,6 +452,11 @@ function compute() {
     calculator.runningTotal *= calculator.displayedNumber;
     displayResult(calculator.runningTotal);
     break;
+  case '/':
+    calculator.runningTotal /= calculator.displayedNumber;
+    calculator.constantOperand = calculator.displayedNumber;
+    displayResult(calculator.runningTotal);
+    break;
   }
 }
 
@@ -485,6 +490,11 @@ function pushEquals() {
       case '*':
         calculator.runningTotal = calculator.displayedNumber
           * calculator.constantOperand;
+        displayResult(calculator.runningTotal);
+        break;
+      case '/':
+        calculator.runningTotal = calculator.displayNumber
+          / calculator.constantOperand;
         displayResult(calculator.runningTotal);
         break;
       }
