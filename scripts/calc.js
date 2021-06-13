@@ -280,6 +280,9 @@ function pressButton(button) {
   case '*': case '/':
     pushOperator(button);
     break;
+  case 'sqrt':
+    pushSqrt();
+    break;
   case '=':
     pushEquals();
     break;
@@ -529,4 +532,11 @@ function pushEquals() {
 
   clearEntry();
   calculator.currentOperator = null;
+}
+
+function pushSqrt() {
+  calculator.runningTotal = Math.sqrt(calculator.displayedNumber);
+  displayResult(calculator.runningTotal);
+
+  clearEntry();
 }
