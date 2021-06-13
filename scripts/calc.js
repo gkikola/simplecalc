@@ -577,28 +577,29 @@ function pushPercent() {
         break;
       }
     }
-  }
-  switch (calculator.currentOperator) {
-  case '+': // Markup
-    calculator.runningTotal *= (1 + calculator.displayedNumber / 100);
-    calculator.constantOperand = calculator.displayedNumber;
-    displayResult(calculator.runningTotal);
-    break;
-  case '-': // Markdown
-    calculator.runningTotal *= (1 - calculator.displayedNumber / 100);
-    calculator.constantOperand = calculator.displayedNumber;
-    displayResult(calculator.runningTotal);
-    break;
-  case '*': // Percentage of first operand
-    calculator.constantOperand = calculator.runningTotal;
-    calculator.runningTotal *= calculator.displayedNumber / 100;
-    displayResult(calculator.runningTotal);
-    break;
-  case '/':
-    calculator.runningTotal /= calculator.displayedNumber / 100;
-    calculator.constantOperand = calculator.displayedNumber;
-    displayResult(calculator.runningTotal);
-    break;
+  } else {
+    switch (calculator.currentOperator) {
+    case '+': // Markup
+      calculator.constantOperand = calculator.runningTotal;
+      calculator.runningTotal *= (1 + calculator.displayedNumber / 100);
+      displayResult(calculator.runningTotal);
+      break;
+    case '-': // Markdown
+      calculator.constantOperand = calculator.runningTotal;
+      calculator.runningTotal *= (1 - calculator.displayedNumber / 100);
+      displayResult(calculator.runningTotal);
+      break;
+    case '*': // Percentage of first operand
+      calculator.constantOperand = calculator.runningTotal;
+      calculator.runningTotal *= calculator.displayedNumber / 100;
+      displayResult(calculator.runningTotal);
+      break;
+    case '/':
+      calculator.runningTotal /= calculator.displayedNumber / 100;
+      calculator.constantOperand = calculator.displayedNumber;
+      displayResult(calculator.runningTotal);
+      break;
+    }
   }
 
   clearEntry();
