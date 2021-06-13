@@ -385,6 +385,9 @@ function pushDecimalPoint() {
   const entry = calculator.currentEntry;
 
   if (!entry.hasDecimalPoint) {
+    if (entry.input.length === 0)
+      entry.input = '0';
+
     entry.input += '.';
     entry.hasDecimalPoint = true;
   }
