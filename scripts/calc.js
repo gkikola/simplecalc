@@ -289,6 +289,18 @@ function pressButton(button) {
   case '%':
     pushPercent();
     break;
+  case 'MC':
+    memClear();
+    break;
+  case 'MR':
+    memRecall();
+    break;
+  case 'M-':
+    memMinus();
+    break;
+  case 'M+':
+    memPlus();
+    break;
   }
 }
 
@@ -566,4 +578,34 @@ function pushSqrt() {
   displayResult(calculator.runningTotal);
 
   clearEntry();
+}
+
+function memClear() {
+  calculator.memory = 0;
+}
+
+function memRecall() {
+  displayResult(calculator.memory);
+}
+
+function memMinus() {
+  if (calculator.currentOperator === null)
+    calculator.runningTotal = calculator.displayedNumber;
+  else if (calculator.currentEntry.input.length > 0)
+    compute();
+
+  clearEntry();
+  calculator.memory -= calculator.displayedNumber;
+  calculator.currentOperator = null;
+}
+
+function memPlus() {
+  if (calculator.currentOperator === null)
+    calculator.runningTotal = calculator.displayedNumber;
+  else if (calculator.currentEntry.input.length > 0)
+    compute();
+
+  clearEntry();
+  calculator.memory += calculator.displayedNumber;
+  calculator.currentOperator = null;
 }
