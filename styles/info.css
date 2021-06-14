@@ -165,3 +165,10 @@ p {
   font-family: "Lucida Console", Courier, monospace;
   text-align: right;
 }
+
+@media (max-width: 500px) {
+  th, td {
+    font-size: 14px;
+    padding: 2px;
+  }
+}
