@@ -131,7 +131,8 @@ th {
 
 th, td {
   border: 1px solid darkgray;
-  padding: 6px 13px;
+  padding: 6px;
+  vertical-align: middle;
 }
 
 p {
@@ -157,12 +158,11 @@ p {
   border-radius: 4px;
 }
 
-.display {
+.display, .result, .result-group {
   font-family: "Lucida Console", Courier, monospace;
 }
 
 .result {
-  font-family: "Lucida Console", Courier, monospace;
   text-align: right;
 }
 
