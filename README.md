@@ -181,6 +181,7 @@ Examples:
 | Divide 16, 20, and -42 by 3        | 16&divide;3=20=42&plusmn;= | 5.333333333, 6.666666666, -14. |
 | Find 17.25% of 120 and 279.11      | 17.25&times;120%279.11%    | 20.7, 48.146475                |
 | Add a 5%, 6% and 7% markup to $42  | 42+5%6%7%                  | 44.1, 44.52, 44.94             |
+| Find the 4th power of 2            | 2&times;===                | 4, 8, 16                       |
 
 
 ### Storing and Manipulating Values in Memory
