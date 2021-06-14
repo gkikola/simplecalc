@@ -482,8 +482,14 @@ function pushDecimalPoint() {
 
 function toggleSign() {
   const entry = calculator.currentEntry;
-  entry.isNegative = !entry.isNegative;
-  displayCurrentEntry();
+
+  if (entry.input.length === 0) {
+    calculator.runningTotal = -calculator.displayedNumber;
+    displayResult(calculator.runningTotal);
+  } else {
+    entry.isNegative = !entry.isNegative;
+    displayCurrentEntry();
+  }
 }
 
 function compute() {
