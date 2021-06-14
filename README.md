@@ -26,7 +26,7 @@ created for [The Odin Project](https://www.theodinproject.com/).
 
 ## Features
 
-- Easy to read 10-digit display with commas for digit grouping
+- Easy-to-read 10-digit display with commas for digit grouping
 - Supports standard arithmetic operations and square roots
 - Can perform percentage calculations including tax and discounts
 - Includes memory storage and recall functions
