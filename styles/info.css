@@ -7,6 +7,7 @@ body {
 .container {
   width: 650px;
   max-width: calc(100vw - 32px);
+  min-height: 100vh;
   margin: auto;
   background-color: white;
   border-width: 0 1px 0;
