@@ -110,7 +110,7 @@ Examples:
 | Description        | Button Presses     | Displayed Result |
 | -------------------| ------------------ | ----------------:|
 | Square root of 5   | 5&radic;           | 2.236067977      |
-| Square root of 7*8 | 7*8=&radic;        | 7.483314773      |
+| Square root of 7*8 | 7&times;8=&radic;  | 7.483314773      |
 | Fourth root of 256 | 256&radic;&radic;  | 4.               |
 
 
