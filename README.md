@@ -147,7 +147,8 @@ Examples:
 #### Tax and Discounts
 
 The percent button ('%') also allows you to add a percentage markup or
-subtract a percentage markdown to or from a number.
+subtract a percentage markdown to or from a number. This can be useful for
+figuring sales tax or discounts.
 
 Examples:
 
