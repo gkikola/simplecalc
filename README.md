@@ -162,9 +162,14 @@ Examples:
 
 Sometimes you need to repeat an operation over and over again with different
 numbers. For example, you might need to multiply a bunch of numbers by 7. This
-can be accomplished easily using the constants feature. After pressing the
-equals button ('=') the first time, enter the next number and press equals
-again. The calculation will be repeated using the new number.
+can be accomplished easily using the constants feature. After entering the
+calculation and pressing the equals button ('=') the first time, enter the
+next number and press equals again. The calculation will be repeated using the
+new number.
+
+In most operations, the second operand is treated as a constant and reused
+when the operation is repeated. However, in multiplication, the first operand
+is used as the constant instead.  See the examples below for clarification.
 
 Examples:
 
