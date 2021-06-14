@@ -97,7 +97,7 @@ Examples:
 | Button Presses               | Displayed Result |
 | ---------------------------- | ----------------:|
 | 123&plusmn;+456+789&plusmn;= | -456.            |
-| 42&plusmn;*16&plusmn;=       | 672.             |
+| 42&plusmn;&times;16&plusmn;= | 672.             |
 
 
 ### Square Roots
