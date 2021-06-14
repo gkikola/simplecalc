@@ -54,7 +54,7 @@ h1 {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 32px;
   font-weight: bold;
-  margin: 10px 0 10px 0;
+  margin: 10px 0 10px;
   text-align: center;
 }
 
@@ -62,7 +62,7 @@ h2 {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 24px;
   font-weight: bold;
-  margin: 10px 0 16px 0;
+  margin: 10px 0 16px;
   text-align: center;
 }
 
@@ -83,18 +83,29 @@ h3 {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 24px;
   font-weight: bold;
-  margin: 24px 0 8px 0;
+  margin: 48px 0 8px;
+  text-align: center;
 }
 
 h4 {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 20px;
   font-weight: bold;
-  margin: 24px 0 8px 0;
+  margin: 24px 0 8px;
+  text-align: center;
+}
+
+h5 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 24px 0 8px;
 }
 
 table {
   border-collapse: collapse;
+  margin: auto;
 }
 
 tr:nth-child(even) {
@@ -119,6 +130,27 @@ th, td {
 }
 
 p {
-  margin: 10px 0;
+  margin: 20px 0;
   line-height: 24px;
+}
+
+.button {
+  display: inline flow-root;
+  font-family: "Lucida Console", Courier, monospace;
+  font-weight: bold;
+  text-align: center;
+
+  color: white;
+  background-color: black;
+
+  padding: 2px 0 0;
+  width: 25px;
+  height: 20px;
+  margin: 2px;
+
+  border-radius: 4px;
+}
+
+.result {
+  text-align: right;
 }
